@@ -12,7 +12,7 @@ image:
 cron:
   repository: jrcichra/cockroach
   pullPolicy: IfNotPresent
-  tag: "sha-9b0a6761"
+  tag: "sha-8962fa1e"
 
 backupPath: /gkube/cockroach-backups
 
