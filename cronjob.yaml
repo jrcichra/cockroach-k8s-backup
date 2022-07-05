@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cockroach-k8s-backup
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        app: cockroach-k8s-backup
+      name: cockroach-k8s-backup
+    spec:
+      template:
+        spec:
+          containers:
+            - image: ghcr.io/jrcichra/cockroach:sha-478fabe7
+              name: cockroach-k8s-backup
+              command:
+                - cockroach
+              args:
+                - sql
+                - --insecure
+                - --host=cockroachdb-public
+                - -e
+                - backup into 's3://cockroach-backups?AWS_ACCESS_KEY_ID=cockroach&AWS_SECRET_ACCESS_KEY=<YOUR_PASSWORD_HERE>&AWS_ENDPOINT=<YOUR_ENDPOINT_HERE>
+              resources:
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+                requests:
+                  cpu: 10m
+                  memory: 128Mi
+          restartPolicy: OnFailure
+  schedule: 0 0 * * *
