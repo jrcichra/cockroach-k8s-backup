@@ -1,2 +1,2 @@
 # cockroach-k8s-backup
-nginx + CronJob for automated backups
+S3 cronjob cockroach backups
