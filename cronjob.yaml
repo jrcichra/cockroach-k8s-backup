@@ -12,7 +12,7 @@ spec:
       template:
         spec:
           containers:
-            - image: ghcr.io/jrcichra/cockroach:sha-478fabe7
+            - image: ghcr.io/jrcichra/cockroach:sha-a90a34df
               name: cockroach-k8s-backup
               command:
                 - cockroach
