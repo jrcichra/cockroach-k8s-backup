@@ -14,8 +14,6 @@ spec:
           containers:
             - image: ghcr.io/jrcichra/cockroach:sha-a90a34df
               name: cockroach-k8s-backup
-              command:
-                - cockroach
               args:
                 - sql
                 - --insecure
